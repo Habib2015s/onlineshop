@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header";
 import Products from "./Products";
 
 const HomePage=()=>{
@@ -6,7 +7,8 @@ const HomePage=()=>{
     
     return(
         <div>
-            <Products/>
+            <Header/>
+            {/* <Products/> */}
         </div>
     )
 }
