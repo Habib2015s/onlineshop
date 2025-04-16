@@ -1,26 +1,31 @@
 import React from "react";
 import Minimal from "./icons/Minimal";
-import Products from "./Products";
 import BigPic from "./icons/BigPic";
+import AccountIcon from "./icons/AccountIcon";
+import UseBasket from "./UseBasket";
 
-const Headers=()=>{
+const Headers=({ClickCard})=>{
+    const NumberCount=UseBasket(state => state.Items.reduce((total, item) => total + item.quantity, 0));
     return(
         <div className=" flex   m-auto p-8 w-4/5 h-max bg-slate-200 ">
             <div className=" flex w-3/4 mt-4 gap-10 justify-start bg-amber-600 fixed p-5">
-                {/* <Logo/> */}
+            
                <Minimal/> 
                 <p>categories</p>
                 <p>deals</p>
                 <p>whats news</p>
                 <p>delivery</p>
                 <div className="flex ml-72 gap-5">
+                    <AccountIcon/>
                     <p>accounts</p>
-                    <p>cart</p>
+                    <div onClick={ClickCard} className={`${NumberCount ? "border-secondary-theme" : "border-transparent"} px-3 py-1 rounded-md cursor-pointer`}>
+                    cart
+                    </div>
                 </div>
             </div>
                 <div >
                     
-                    <BigPic/>
+                    {/* <BigPic/> */}
                     </div>
             {/* <Products/> */}
         </div>
