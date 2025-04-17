@@ -17,8 +17,8 @@ const Headers=()=>{
         return sumqtn
     }
     return(
-        <div className=" flex  m-auto p-8 w-4/5 h-max bg-slate-200 ">
-            <div className=" flex w-3/4 mt-4 gap-10 justify-start bg-amber-600 fixed p-5">
+        <div className=" flex  m-auto  w-4/5 h-max bg-slate-200 ">
+            <div className=" flex  gap-10 justify-start bg-amber-600  p-5">
             
                <Minimal/> 
                 <p>categories</p>
@@ -35,7 +35,6 @@ const Headers=()=>{
             </div>
             <ClickCardModal visible={isOpen} onclose={handleCloseModal}/>
                 
-            {/* <Products/> */}
         </div>
         
         

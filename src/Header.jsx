@@ -2,9 +2,10 @@ import React from "react";
 import Call from "./icons/Call";
 import Headers from "./Headers";
 const Header=()=>{
+    
     return(<div >
 
-        <div className="w-screen p-4 h-12 fixed flex bg-amber-600">
+        <div className="w-screen p-4 h-12 flex bg-amber-600">
              
 
              <Call />
