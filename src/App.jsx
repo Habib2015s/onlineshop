@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
 import NotFound from "./NotFound";
 import Products from "./Products";
-import Headers from "./Headers";
 import Basket from "./Basket";
 import ShowBasket from "./ShowBasket";
 import {  QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -17,7 +16,6 @@ const App=()=> {
       <QueryClientProvider client={queryclient}>
 <ReactQueryDevtools/>
       <BrowserRouter>
-      
       <Routes>
         <Route path="/" element={<HomePage/>}>
         <Route path="/header" element={<Header/>}/>
