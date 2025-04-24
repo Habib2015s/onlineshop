@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import Close from "../icons/Close";
+import { createPortal } from "react-dom";
+import { useClickOutside } from "./ClickOutSide/ClickOutIn";
 const ClickCardModal=({visible,onclose})=>{
+    const ModalRef= useRef(null);
+    useClickOutside(ModalRef,onclose);
     if(!visible){return null}
     return(
-        <div className="w-full h-screen bg-black/30 flex justify-center items-center fixed top-0 left-0">
-            <div className="bg-white p-5 rounded-xl absolute z-10 overflow-y-auto translate-[-50%] w-[90%] sm:w-[80%] max-w-[1000px] max-h-[70%] overflow ">
-           <button onClick={onclose}>
+        createPortal(
+
+            <div className="w-full h-screen bg-black/30 flex justify-center items-center fixed top-0 left-0">
+            <div ref={ModalRef} className="bg-white p-5 rounded-xl absolute z-10 overflow-y-auto translate-[-50%] w-[90%] sm:w-[80%] max-w-[1000px] max-h-[70%] overflow ">
+           <button  onClick={onclose}>
             <Close />
             </button>    
             <div className="grid grid-cols-1 lg:grid-cols-5 lg:grid-rows-5 gap-5 max-h-[100%] mt-10">
@@ -47,7 +53,8 @@ const ClickCardModal=({visible,onclose})=>{
                     </div>  
             </div>
             </div>
-        </div>
+        </div>,
+        document.body)
     )
 }
 export default ClickCardModal
