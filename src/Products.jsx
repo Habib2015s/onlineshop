@@ -29,7 +29,7 @@ const Products = () => {
     return (
         <div className="m-auto w-3/4">
             {isPending ? ("loading...") : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-10 items-stretch">
+                <div className="grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-10 items-stretch">
                     {data.data.map((item) => (
                         <div 
                             key={item.id}

@@ -9,7 +9,7 @@ const Header=()=>{
              
 
              <Call />
-                <p className="text-white">+91 (720) 090 1896</p>
+                <p className="text-white ">+91 (720) 090 1896</p>
              
             <div className="text-white text-center pl-96">
                 <p >Get 50%  Off on Selected Items   |   Shop Now</p>
