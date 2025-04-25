@@ -4,7 +4,7 @@ import Close from "../icons/Close";
 import { useClickOutside } from "./ClickOutSide/ClickOutIn";
 import ProductDetails from "../ProductDetails";
 
-const SideBarModal=({visible,onclose})=>{
+const SideBarModal=({visible,onclose,productId})=>{
     
     const ModalRef= useRef(null);
     useClickOutside(ModalRef,onclose);
@@ -17,7 +17,7 @@ const SideBarModal=({visible,onclose})=>{
             <div>
             
 
-                <ProductDetails productId={123}  />
+                <ProductDetails productId={productId}  />
             
             
                 </div>   

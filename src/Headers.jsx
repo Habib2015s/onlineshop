@@ -17,23 +17,30 @@ const Headers=()=>{
         return sumqtn
     }
     return(
-        <div className=" flex  m-auto  w-4/5 h-max bg-slate-200 ">
-            <div className=" flex  gap-10 justify-start bg-slate-200  p-5">
-            
+        <div className=" px-[10px] md:px-[67px] bg-gray-100 flex justify-between items-center max-w-[1500px] mx-auto py-3 ">
+            <div className="flex items-center gap-x-3">
+            <div className="flex items-center">
+
                <Minimal/> 
+            </div>
+               <div className="flex items-center gap-x-2">
+
                 <p>categories</p>
                 <p>deals</p>
                 <p>whats news</p>
                 <p>delivery</p>
-                <div className="flex ml-72 gap-5">
+               </div>
+                </div>
+                <div className="flex items-center gap-x-2">
                     <AccountIcon/>
                     <p>accounts</p>
-                </div>
-                    <div onClick={()=>{setisOpen(true)}}>
+                    <div className="flex items-center gap-x-2 border-2 border-transparent 
+                    px-3 py-1 rounded-md cursor-pointer" onClick={()=>{setisOpen(true)}}>
                     cart {sumOfBasket()}
                     </div>
-            </div>
+                        </div>
             <ClickCardModal visible={isOpen} onclose={handleCloseModal}/>
+                
             
                 
         </div>
