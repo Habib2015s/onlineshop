@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Minimal from "./icons/Minimal";
-import AccountIcon from "./icons/AccountIcon";
-import UseBasket from "./UseBasket";
-import ClickCardModal from "./Modals/ClickCartModal";
+import Minimal from "../icons/Minimal";
+import AccountIcon from "../icons/AccountIcon";
+import UseBasket from "../stores/utils/UseBasket";
+import ClickCardModal from "../Modals/ClickCartModal";
 
 const Headers=()=>{
 

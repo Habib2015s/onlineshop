@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./HomePage";
 import NotFound from "./NotFound";
-import Products from "./Products";
+import Products from "./stores/components/Products";
 import {  QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Header from "./Header";
-import ProductDetails from "./ProductDetails";
+import Header from "./headers/Header";
+import ProductDetails from "./stores/components/ProductDetails";
 
 const App=()=> {
   const queryclient= new QueryClient()

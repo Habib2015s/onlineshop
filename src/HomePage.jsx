@@ -1,9 +1,10 @@
 import React from "react";
-import Header from "./Header";
-import Products from "./Products";
+import Header from "./headers/Header";
+import Products from "./stores/components/Products";
 import Footer from "./Footer/Footer";
+import TitleLogo from "./stores/components/TitleLogo";
 
-import TitleLogo from "./TitleLogo";
+
 
 
 const HomePage=()=>{

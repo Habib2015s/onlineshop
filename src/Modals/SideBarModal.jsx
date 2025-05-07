@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import { createPortal } from "react-dom";
 import Close from "../icons/Close";
 import { useClickOutside } from "./ClickOutSide/ClickOutIn";
-import ProductDetails from "../ProductDetails";
+import ProductDetails from "../stores/components/ProductDetails";
 
-const SideBarModal=({visible,onclose,productId})=>{
+const SideBarModal=({visible,onclose,productId,handleCloseModal})=>{
     
     const ModalRef= useRef(null);
     useClickOutside(ModalRef,onclose);
@@ -17,7 +17,7 @@ const SideBarModal=({visible,onclose,productId})=>{
             <div>
             
 
-                <ProductDetails productId={productId}  />
+                <ProductDetails onclose={handleCloseModal} productId={productId}  />
             
             
                 </div>   

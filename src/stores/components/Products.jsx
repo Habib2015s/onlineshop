@@ -1,8 +1,8 @@
-import UseBasket from "./UseBasket";
-import Like from "./icons/Like";
-import Stars from "./icons/Stars";
-import SideBarModal from "./Modals/SideBarModal";
-import { getProducts } from "./service/getProducts";
+import UseBasket from "../utils/UseBasket";
+import Like from "../../icons/Like";
+import Stars from "../../icons/Stars";
+import SideBarModal from "../../Modals/SideBarModal";
+import { getProducts } from "../../service/getProducts";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 

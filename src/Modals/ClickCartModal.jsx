@@ -2,7 +2,10 @@ import React, { useRef } from "react";
 import Close from "../icons/Close";
 import { createPortal } from "react-dom";
 import { useClickOutside } from "./ClickOutSide/ClickOutIn";
+import Basket from "../stores/utils/Basket";
+import UseBasket from "../stores/utils/UseBasket";
 const ClickCardModal=({visible,onclose})=>{
+    const {items}=UseBasket()
     const ModalRef= useRef(null);
     useClickOutside(ModalRef,onclose);
     if(!visible){return null}
@@ -16,7 +19,13 @@ const ClickCardModal=({visible,onclose})=>{
             </button>    
             <div className="grid grid-cols-1 lg:grid-cols-5 lg:grid-rows-5 gap-5 max-h-[100%] mt-10">
 
-                <div className="opacity: 1; transform: none;  border border-gray-500 lg:col-span-3 lg:row-span-3 p-4 rounded-lg overflow-y-auto max-h-[350px]">cart detail</div>  
+                <div className="opacity: 1; transform: none;  border border-gray-500 
+                lg:col-span-3 lg:row-span-3 p-4 rounded-lg overflow-y-auto max-h-[350px]">cart detail
+                {items.map((item)=>{
+                        return<Basket key={item.id} product={item}/>
+                })
+                }
+                </div>  
                 <div className="border border-gray-500 lg:row-start-4 lg:col-span-3 lg:row-span-2 p-4 rounded-lg"> <h2>
                     delivery information
                     </h2>
