@@ -6,3 +6,12 @@ export const getProductID=async(id)=>{
     return data
     
 };
+export async function getProductsById(ids) {
+    const responses = await Promise.all(
+        ids.map((id) => getProductID(id))
+    );
+
+    const data = responses.map((res) => res.data);
+
+    return data;
+}

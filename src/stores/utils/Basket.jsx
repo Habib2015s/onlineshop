@@ -2,16 +2,13 @@ import React, { useEffect, useState } from 'react'
 import UseBasket from './UseBasket';
 import Counter from '../../store/Counter';
 
-export default function Basket  ({ product})  {
-  console.log(product);
+const  Basket  =({ product})=>  {
   
+  
+  const { id, title,image, price, description } = product;
   const [quantity, setQuantity] = useState(product.quantity ||0 );
-  console.log(quantity);
   const editItem = UseBasket((state) => state.actions.editItem);
   const setTotalPrice = UseBasket((state) => state.actions.setPrice);
-  const { id, title,image, price, description } = product;
-  
-  console.log(product); 
   
   const handleClick=(amount) =>{
     if (amount > 0) {
@@ -23,26 +20,26 @@ export default function Basket  ({ product})  {
   }
   
   const handleChange=()=> {
-      const newValue = Number();
-      if (newValue) {
-          setQuantity(newValue);
-        }
-        else {
-          setQuantity(0);
-      }
+    const newValue = Number();
+    if (newValue) {
+      setQuantity(newValue);
     }
-    
-    useEffect(() => {
-      if (product) {
-        editItem({ id, quantity, price })
-        setTotalPrice();
-      }
-    }, [quantity]);
-    
-    return (
-      <div className="grid grid-rows-[2fr_1fr] gap-y-5 sm:grid-rows-none sm:grid-cols-[150px_1fr] items-center mb-2 bg-gray-100 p-2">
+    else {
+      setQuantity(0);
+    }
+  }
+  
+  useEffect(() => {
+    if (product) {
+      editItem({ id, quantity, price })
+      setTotalPrice();
+    }
+  }, [quantity]);
+  
+  return (
+    <div className="grid grid-rows-[2fr_1fr] gap-y-5 sm:grid-rows-none sm:grid-cols-[150px_1fr] items-center mb-2 bg-gray-100 p-2">
           <div className="flex flex-col items-center">
-              <img src={image} alt="" />
+              <img src={image} alt="image" />
               <Counter quantity={quantity} handleChange={handleChange} handleClick={handleClick} />
           </div>
           <div className="flex justify-between gap-x-2">
@@ -58,3 +55,4 @@ export default function Basket  ({ product})  {
       </div>
   )
 }
+export default Basket

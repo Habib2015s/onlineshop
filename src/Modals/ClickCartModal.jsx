@@ -4,8 +4,34 @@ import { createPortal } from "react-dom";
 import { useClickOutside } from "./ClickOutSide/ClickOutIn";
 import Basket from "../stores/utils/Basket";
 import UseBasket from "../stores/utils/UseBasket";
+import { useQuery } from "@tanstack/react-query";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotateLeft, faTruck } from "@fortawesome/free-solid-svg-icons";
+import { getProductsById } from "../service/productsapi";
 const ClickCardModal=({visible,onclose})=>{
-    const {items}=UseBasket()
+    const items=UseBasket((state)=>state.items)
+    const setQuantity = UseBasket((state) => state.actions.setTotalQuantity);
+  const totalPrice = UseBasket((state) => state.invoice.totalPrice);
+  const productsByIdQuery = useQuery({
+    queryKey: ["/productsbyid"],
+    queryFn: () => getProductsById(ideas),
+
+  });
+  const products = productsByIdQuery?.data?.map((product) => {
+    const foundProduct = items.find((item) => product.id === item.id);
+
+    if (foundProduct) {
+      return { ...product, quantity: foundProduct.quantity };
+    }
+  });
+
+  const ideas = items.map((item) => item.id);
+  const totalQuantity = items.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+  setQuantity(totalQuantity);
+
     const ModalRef= useRef(null);
     useClickOutside(ModalRef,onclose);
     if(!visible){return null}
@@ -21,7 +47,7 @@ const ClickCardModal=({visible,onclose})=>{
 
                 <div className="opacity: 1; transform: none;  border border-gray-500 
                 lg:col-span-3 lg:row-span-3 p-4 rounded-lg overflow-y-auto max-h-[350px]">cart detail
-                {items.map((item)=>{
+                {products.map((item)=>{
                         return<Basket key={item.id} product={item}/>
                 })
                 }
@@ -44,21 +70,36 @@ const ClickCardModal=({visible,onclose})=>{
                 <div className="flex flex-col gap-y-3 m-4"></div>
                 <div>
                     <h3>product added</h3>
-                    <p></p>
+                    <p>{totalQuantity}</p>
                 </div>
                 <div>
                     <h3>total price</h3>
-                    <p></p>
+                    <p >{totalPrice}</p>
                 </div>
                 <div>
                     <h3>Tax Percentage</h3>
-                    <p></p>
+                    <p>_</p>
                 </div>
                 <div>
                     <h3>final price</h3>
-                    <p className="text-2xl font-bold text-secondary-theme"></p>
+                    <p className="text-2xl font-bold text-secondary-theme">{totalPrice}</p>
                 </div>
-                    
+                <div className="mt-auto flex flex-col gap-y-5 bg-gray-200 text-gray-500 rounded-b-lg">
+          <div className="flex items-center gap-x-5 px-5 py-2">
+            <FontAwesomeIcon icon={faTruck} size="xl" />
+            <div>
+              <h4 className="text-black">Delivery Limit</h4>
+              <p>Free delivery within 50 km</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-x-5 px-5 py-2">
+            <FontAwesomeIcon icon={faRotateLeft} size="xl" />
+            <div>
+              <h4 className="text-black">Return Policy</h4>
+              <p>Within 5days of product delivery</p>
+            </div>
+          </div>
+        </div>
                     </div>  
             </div>
             </div>

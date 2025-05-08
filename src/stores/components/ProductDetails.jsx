@@ -50,9 +50,7 @@ const ProductDetails = ({ productId ,onclose}) => {
     }, [quantity]);
     if (ProductQuery.isLoading) return <div>loading....</div>;
     if (ProductQuery.error) return <div>error: {ProductQuery.error.message}</div>;
-    console.log({handleChange});
     
-    console.log({editItem});
     return (
         <div key={product.id}>
             <div className="w-[100%] justify-center ">

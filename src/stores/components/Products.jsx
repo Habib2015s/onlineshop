@@ -1,4 +1,3 @@
-import UseBasket from "../utils/UseBasket";
 import Like from "../../icons/Like";
 import Stars from "../../icons/Stars";
 import SideBarModal from "../../Modals/SideBarModal";
@@ -19,7 +18,7 @@ const Products = () => {
         queryFn: () => getProducts(),
     });
     
-    const { actions } = UseBasket();
+    
     
     const handleProductClick = (productId) => {
         setSelectedProductId(productId);

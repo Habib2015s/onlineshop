@@ -29,8 +29,6 @@ const UseBasket =create(
             }
         });
     },
-    
-    
     setPrice: () => {
         set((state) => {
             return {
@@ -53,15 +51,18 @@ const UseBasket =create(
                     };
                 });
             },
-            
-            
-            
-            
-            
+            setTotalQuantity: (quantity) => {
+                set((state) => {
+                    return {
+                        invoice: {
+                            ...state.invoice,
+                            totalQuantity: quantity,
+                        },
+                    };
+                });
+            },
         },
     };
-}
-
+})
 )
-);
 export default UseBasket
