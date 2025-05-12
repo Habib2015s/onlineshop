@@ -1,7 +1,16 @@
 
 import { create } from "zustand";
-const SetID = create((set) =>{
-    return {id: null,
+const useSetID = create((set) =>{
+    return {
+        productModalOpen: false,
+        id: null,
+        setProductModalOpen: (isOpen) => {
+            set(() => {
+                return {
+                    productModalOpen: isOpen,
+                };
+            });
+        },
 
         setProductId: (id) => {
             set(() => {
@@ -9,4 +18,4 @@ const SetID = create((set) =>{
             );}
         }
 })
-export default SetID
+export default useSetID

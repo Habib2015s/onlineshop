@@ -1,21 +1,19 @@
-import React, { useRef } from "react";
 import Close from "../icons/Close";
-import { createPortal } from "react-dom";
-import { useClickOutside } from "./ClickOutSide/ClickOutIn";
 import Basket from "../stores/utils/Basket";
 import UseBasket from "../stores/utils/UseBasket";
 import { useQuery } from "@tanstack/react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotateLeft, faTruck } from "@fortawesome/free-solid-svg-icons";
 import { getProductsById } from "../service/productsapi";
-const ClickCardModal=({visible,onclose})=>{
-    const items=UseBasket((state)=>state.items)
-    const setQuantity = UseBasket((state) => state.actions.setTotalQuantity);
+
+const ClickCardModal=()=>{
+  const items=UseBasket((state)=>state.items)
+  const setQuantity = UseBasket((state) => state.actions.setTotalQuantity);
   const totalPrice = UseBasket((state) => state.invoice.totalPrice);
   const productsByIdQuery = useQuery({
     queryKey: ["/productsbyid"],
     queryFn: () => getProductsById(ideas),
-
+    
   });
   const products = productsByIdQuery?.data?.map((product) => {
     const foundProduct = items.find((item) => product.id === item.id);
@@ -32,25 +30,24 @@ const ClickCardModal=({visible,onclose})=>{
   );
   setQuantity(totalQuantity);
 
-    const ModalRef= useRef(null);
-    useClickOutside(ModalRef,onclose);
-    if(!visible){return null}
+
     return(
-        createPortal(
+        
 
             <div className="w-full h-screen bg-black/30 flex justify-center items-center fixed top-0 left-0">
-            <div ref={ModalRef} className="bg-white p-5 rounded-xl absolute z-10 overflow-y-auto translate-[-50%] w-[90%] sm:w-[80%] max-w-[1000px] max-h-[70%] overflow ">
-           <button  onClick={onclose}>
-            <Close />
-            </button>    
+            <div className="bg-white p-5 rounded-xl absolute z-10 overflow-y-auto translate-[-50%] w-[90%] sm:w-[80%] max-w-[1000px] max-h-[70%] overflow ">
             <div className="grid grid-cols-1 lg:grid-cols-5 lg:grid-rows-5 gap-5 max-h-[100%] mt-10">
 
                 <div className="opacity: 1; transform: none;  border border-gray-500 
                 lg:col-span-3 lg:row-span-3 p-4 rounded-lg overflow-y-auto max-h-[350px]">cart detail
-                {products.map((item)=>{
-                        return<Basket key={item.id} product={item}/>
-                })
-                }
+                {products?.map(
+                (product) =>
+                  product && (
+                    <li key={product.id}>
+                      <Basket product={product} />
+                    </li>
+                  )
+              )}
                 </div>  
                 <div className="border border-gray-500 lg:row-start-4 lg:col-span-3 lg:row-span-2 p-4 rounded-lg"> <h2>
                     delivery information
@@ -103,8 +100,8 @@ const ClickCardModal=({visible,onclose})=>{
                     </div>  
             </div>
             </div>
-        </div>,
-        document.body)
+        </div>
+        
     )
 }
 export default ClickCardModal

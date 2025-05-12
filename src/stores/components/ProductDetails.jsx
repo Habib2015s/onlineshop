@@ -8,7 +8,6 @@ import SetSize from "../../Sizes/SetSize";
 import Counter from "../../store/Counter";
 import UseBasket from "../utils/UseBasket";
 const ProductDetails = ({ productId ,onclose}) => {
-    
     const addToBasket = UseBasket(state=>state.actions.addToBasket);
     const totalPrice = UseBasket(state => state.invoice.totalPrice);
     const editItem = UseBasket(state => state.actions.editItem);    
@@ -43,11 +42,10 @@ const ProductDetails = ({ productId ,onclose}) => {
     const product = ProductQuery?.data?.data;
 
     useEffect(() => {
-        if (ProductQuery.isSuccess) {
-                editItem({ id: !product.id||product, quantity, price: product.price });
-            setPrice();
+        if (quantity > 0) {
+            // زمانی که quantity تغییر می‌کند و بزرگتر از صفر می‌شود، باید کامپوننت Counter رندر شود
         }
-    }, [quantity]);
+    }, [quantity]);  // نظارت بر تغییرات quantity
     if (ProductQuery.isLoading) return <div>loading....</div>;
     if (ProductQuery.error) return <div>error: {ProductQuery.error.message}</div>;
     
@@ -71,7 +69,7 @@ const ProductDetails = ({ productId ,onclose}) => {
                 </div>
                 <Stars />
                 <form onClick={handleSubmit} className="h-[100%] flex flex-col gap-y-10 py-2">
-                    
+                     </form>
                 <SetSize/>
                 
                 <div className="flex items-center gap-x-5 px-5 py-2">
@@ -93,16 +91,21 @@ const ProductDetails = ({ productId ,onclose}) => {
                 <div className="flex items-center justify-between">
 
                 <div className="flex gap-x-5 items-center">
-                { quantity > 0 ?
-                    <Counter
-                    quantity={quantity}
-                    handleChange={()=>handleChange()}
-                    handleClick={handleClick}
-                    /> :
-                    <button  disabled={!ProductQuery.isSuccess} className="text-main-theme border-main-theme border
-                    rounded-2xl py-1 px-7 text-sm hover:bg-lime-500 hover:text-white 
-                    transition-colors cursor-pointer disabled:opacity-50">Add to Cart</button>
-                }
+                { quantity > 0 ? 
+    <Counter 
+        quantity={quantity} 
+        handleChange={() => handleChange()} 
+        handleClick={handleClick} 
+    /> 
+    : 
+    <button 
+        disabled={!ProductQuery.isSuccess} 
+        className="text-main-theme border-main-theme border rounded-2xl py-1 px-7 text-sm hover:bg-lime-500 hover:text-white transition-colors cursor-pointer disabled:opacity-50"
+        onClick={handleSubmit}
+    >
+        Add to Cart
+    </button>
+}
                     <button className="text-sm cursor-pointer border rounded-2xl py-1 px-7 hover:bg-red-800 hover:text-white transition-colors "
                       onClick={onclose}>cancel</button>
 
@@ -112,7 +115,7 @@ const ProductDetails = ({ productId ,onclose}) => {
                 <span>{(totalPrice)}</span>
                 </div>
                       </div>
-                </form>
+               
 
 
             </div>
