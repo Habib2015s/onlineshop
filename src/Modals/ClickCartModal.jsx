@@ -67,11 +67,11 @@ const ClickCardModal=()=>{
                 <div className="flex flex-col gap-y-3 m-4"></div>
                 <div>
                     <h3>product added</h3>
-                    <p>{totalQuantity}</p>
+                    <p className="text-gray-500">{totalQuantity}</p>
                 </div>
                 <div>
                     <h3>total price</h3>
-                    <p >{totalPrice}</p>
+                    <p className="text-gray-500">{totalPrice}$</p>
                 </div>
                 <div>
                     <h3>Tax Percentage</h3>
@@ -79,7 +79,7 @@ const ClickCardModal=()=>{
                 </div>
                 <div>
                     <h3>final price</h3>
-                    <p className="text-2xl font-bold text-secondary-theme">{totalPrice}</p>
+                    <p className="text-2xl font-bold text-red-800">{totalPrice}$</p>
                 </div>
                 <div className="mt-auto flex flex-col gap-y-5 bg-gray-200 text-gray-500 rounded-b-lg">
           <div className="flex items-center gap-x-5 px-5 py-2">

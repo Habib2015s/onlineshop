@@ -16,7 +16,7 @@ return(
 
         <Minimal/> 
         </div>
-        <div className="flex items-center gap-x-2">
+        <div className="flex items-center gap-x-6">
 
          <p>categories</p>
         <p>deals</p>

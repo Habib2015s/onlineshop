@@ -37,9 +37,10 @@ const  Basket  =({ product})=>  {
   }, [quantity]);
   
   return (
-    <div className="grid grid-rows-[2fr_1fr] gap-y-5 sm:grid-rows-none sm:grid-cols-[150px_1fr] items-center mb-2 bg-gray-100 p-2">
+    <div className="grid grid-rows-[2fr_1fr] gap-x-5 gap-y-5 sm:grid-rows-none sm:grid-cols-[150px_1fr] items-center mb-2 bg-gray-100 p-2">
           <div className="flex flex-col items-center">
               <img src={image} alt="image" />
+              <br/>
               <Counter quantity={quantity} handleChange={handleChange} handleClick={handleClick} />
           </div>
           <div className="flex justify-between gap-x-2">
@@ -49,7 +50,7 @@ const  Basket  =({ product})=>  {
                   
               </div>
               <div>
-                  <p className="font-semibold">{price}</p>
+                  <p className="text-2xl font-bold">{price}$</p>
               </div>
           </div>
       </div>

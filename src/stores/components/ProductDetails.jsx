@@ -42,10 +42,11 @@ const ProductDetails = ({ productId ,onclose}) => {
     const product = ProductQuery?.data?.data;
 
     useEffect(() => {
-        if (quantity > 0) {
-            // زمانی که quantity تغییر می‌کند و بزرگتر از صفر می‌شود، باید کامپوننت Counter رندر شود
+        if (ProductQuery.isSuccess) {
+             editItem({ id: product.id, quantity, price: product.price });
+            setPrice();
         }
-    }, [quantity]);  // نظارت بر تغییرات quantity
+    }, [quantity]);  
     if (ProductQuery.isLoading) return <div>loading....</div>;
     if (ProductQuery.error) return <div>error: {ProductQuery.error.message}</div>;
     
@@ -112,7 +113,7 @@ const ProductDetails = ({ productId ,onclose}) => {
                 </div>
                 <div>
                 <FontAwesomeIcon icon={faCartShopping} size="xl" />
-                <span>{(totalPrice)}</span>
+                <span>{totalPrice}</span>
                 </div>
                       </div>
                
