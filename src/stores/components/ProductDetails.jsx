@@ -73,7 +73,7 @@ const ProductDetails = ({ productId ,onclose}) => {
                      </form>
                 <SetSize/>
                 
-                <div className="flex items-center gap-x-5 px-5 py-2">
+                <div className="flex items-center gap-x-5 px-5 py-7">
                     <FontAwesomeIcon icon={faTruck} size="xl"/>
                     <div>
                         
@@ -81,7 +81,7 @@ const ProductDetails = ({ productId ,onclose}) => {
                     <p>Free delivery within 50 km</p>
                     </div>
                 </div>
-                <div className="flex items-center gap-x-5 px-5 py-2">
+                <div className="flex items-center gap-x-5 px-5 py-7">
                     <FontAwesomeIcon icon={faRotateLeft} size="xl"/>
                     <div>
 

@@ -29,7 +29,7 @@ return(
         <p>accounts</p>
         <div className="flex items-center gap-x-2 border-2 border-transparent 
         px-3 py-1 rounded-md cursor-pointer" onClick={handleCartClick}>
-        cart {sumOfBasket()}
+         {sumOfBasket()}<p>cart</p>
         </div>
         </div>
            
