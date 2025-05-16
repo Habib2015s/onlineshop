@@ -52,7 +52,7 @@ const ProductDetails = ({ productId ,onclose}) => {
     
     return (
         <div key={product.id}>
-            <div className="w-[100%] justify-center ">
+            <div className="w-[100%] justify-center">
                 <div className="p-20">
                     <img className="w-[100%] aspect-square" src={product.image} alt="image"/>
                 </div>

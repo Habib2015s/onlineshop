@@ -39,7 +39,7 @@ const Products = () => {
       {isPending ? (
         "loading..."
       ) : (
-        <div className="grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-10 items-stretch">
+        <div className=" grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-10 items-stretch">
           {data.data.map((item) => {
             const isFavorite = wishlist.includes(item.id);
             const isInCart = cartItems.some((cartItem) => cartItem.id === item.id);
@@ -50,12 +50,14 @@ const Products = () => {
                 onClick={() => handleProductClick(item.id)}
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                className="relative w-full h-full flex flex-col gap-y-3 bg-white p-2 shadow rounded-md hover:scale-101 cursor-pointer transition-transform"
+                      className="relative w-[100%] h-[100%]  flex flex-col gap-y-3
+                       bg-white p-2 shadow z-0 rounded-md hover:scale-101 cursor-pointer transition-transform "
+
               >
                 <div className="w-full relative">
                   <img className="w-full p-14 aspect-square" src={item.image} alt="image" />
-            
-                    <Favorite itemId={item.id} isFavorite={isFavorite} />
+                
+                    <Favorite  itemId={item.id}  isFavorite={isFavorite} />
                 
                 </div>
 
@@ -72,14 +74,14 @@ const Products = () => {
 
                 {hoveredId === item.id && (
                   <span
-                    className={`absolute inset-0 ${
+                    className={`absolute inset-0 z-0 ${
                       isInCart ? "bg-red-700/15" : "bg-green-700/15"
                     } rounded-md flex justify-center items-center transition-colors`}
                   >
                     <span
-                      className={`w-20 h-20 bg-gray-100 flex items-center justify-center rounded-full ${
+                      className={`w-20 h-20 bg-gray-100 flex  items-center justify-center rounded-full ${
                         isInCart ? "text-red-600" : "text-green-600"
-                      } hover:scale-101`}
+                      } hover:scale-101 `}
                     >
                       {isInCart ? (
                         <FontAwesomeIcon icon={faTrash} size="xl" />

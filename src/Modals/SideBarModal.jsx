@@ -11,7 +11,7 @@ const SideBarModal=({visible,onclose,productId,handleCloseModal})=>{
     if(!visible){return null}
     return(createPortal(
         <div className="w-full h-screen bg-black/30 flex justify-center items-center fixed top-0 left-0">
-            <div ref={ModalRef} className="bg-white p-5 rounded-xl absolute z-10 overflow-y-auto top-5 bottom-5 left-5 right-5 md:w-[60%] md:max-w-[500px] md:left-auto ">
+            <div ref={ModalRef} className="bg-white p-5 rounded-xl absolute z-50 overflow-y-auto top-5 bottom-5 left-5 right-5 md:w-[60%] md:max-w-[500px] md:left-auto ">
            <button onClick={onclose}>
             <Close /> </button> 
             <div>

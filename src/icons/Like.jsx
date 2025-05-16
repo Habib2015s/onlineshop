@@ -11,7 +11,7 @@ const Like=({fill,stroke})=>{
   7.87819 2.23334 8.727L3.0447 9.5991L8.9998 16L14.9549 9.5991L15.7663 8.727C16.1574 8.30679 
   16.4677 7.80785 16.6794 7.25871C16.891 6.70957 17 6.12097 17 5.52656C17 4.93214 16.891 4.34355 
   16.6794 3.7944C16.4677 3.24526 16.1574 2.74633 15.7663 2.32611Z"
-   stroke={stroke} strokeOpacity="0.5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+   stroke={stroke} strokeOpacity="1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
 
         </div>

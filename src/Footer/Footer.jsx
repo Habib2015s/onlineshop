@@ -1,9 +1,12 @@
 import React from "react";
 import UseBasket from "../stores/utils/UseBasket";
 import BasketIcon from "../icons/BasketIcon";
+import useLikeCounter from "../stores/useLikeCounter";
+import NoneLike from "../icons/NoneLike";
 
 const Footer=()=>{
-     const {items}=UseBasket()
+    const count = useLikeCounter((state) => state.count);
+    const {items}=UseBasket()
     const sumOfBasket=()=>{
         const sumqtn =items.reduce((acc,curr)=>acc+curr.quantity,0)
         return sumqtn
@@ -15,6 +18,11 @@ const Footer=()=>{
                 {sumOfBasket()}
                 </div>
                  <p>Item in Your Basket</p>
+                 <div className="flex gap-x-3">
+                 
+                    <NoneLike/>
+                 <p>{count} WishList</p>
+                 </div>
         </div>
     )
 }
