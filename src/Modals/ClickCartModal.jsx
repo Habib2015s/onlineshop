@@ -1,4 +1,4 @@
-import Close from "../icons/Close";
+
 import Basket from "../stores/utils/Basket";
 import UseBasket from "../stores/utils/UseBasket";
 import { useQuery } from "@tanstack/react-query";
@@ -34,16 +34,17 @@ const ClickCardModal=()=>{
     return(
         
 
-            <div className="w-full h-screen bg-black/30 flex justify-center items-center fixed top-0 left-0">
-            <div className="bg-white p-5 rounded-xl absolute z-10 overflow-y-auto translate-[-50%] w-[90%] sm:w-[80%] max-w-[1000px] max-h-[70%] overflow ">
-            <div className="grid grid-cols-1 lg:grid-cols-5 lg:grid-rows-5 gap-5 max-h-[100%] mt-10">
+            <div className=" grid grid-cols-1 lg:grid-cols-5 lg:grid-rows-5 gap-5 max-h-[100%] mt-1">
+            <div  className="border border-gray-500 lg:col-span-3 lg:row-span-3 p-4 rounded-lg overflow-y-auto max-h-[350px] ">
+            
 
-                <div className="opacity: 1; transform: none;  border border-gray-500 
-                lg:col-span-3 lg:row-span-3 p-4 rounded-lg overflow-y-auto max-h-[350px]">cart detail
+                <h2  className="font-bold ml-2 mt-2">
+                  Cart Detail
+                  </h2>
                 {products?.map(
                 (product) =>
                   product && (
-                    <li key={product.id}>
+                    <li className="flex flex-col gap-y-2" key={product.id}>
                       <Basket product={product} />
                     </li>
                   )
@@ -99,8 +100,7 @@ const ClickCardModal=()=>{
         </div>
                     </div>  
             </div>
-            </div>
-        </div>
+            
         
     )
 }

@@ -17,7 +17,7 @@ const OpenModal = ({ style, isOpen, onClose, children, modalName }) => {
                     <div className={`bg-black/30 inset-0 fixed z-5`}>
                         <motion.div
                             ref={modalRef}
-                            className={`bg-white p-5 rounded-xl absolute z-10 overflow-y-auto ${style}`}
+                            className={`bg-white left-[50%] p-5 rounded-xl absolute z-10 overflow-y-auto ${style}`}
                             initial={{ x: 200, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: 200, opacity: 0 }}

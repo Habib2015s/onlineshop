@@ -12,6 +12,7 @@ const Header=()=>{
         maxWidth: "1000px",
         maxHeight: "70%",
         overflow: "auto"
+        
       };
     const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
 

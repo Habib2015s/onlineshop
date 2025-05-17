@@ -9,6 +9,7 @@ import Stars from "../../icons/Stars";
 import {Favorite} from "../../icons/Favorite";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
+import ExpandableText from "../utils/ExpandableText";
 
 const Products = () => {
     
@@ -66,7 +67,7 @@ const Products = () => {
                     <h2 className="clamp-text w-3/5 text-lg">{item.title}</h2>
                     <h3 className="text-cyan-800 text-xl">{item.price}$</h3>
                   </div>
-                  <div className="clamp-text text-sm text-gray-500">{item.description}</div>
+                  <ExpandableText  text={item.description} maxChars={100} />
                   <div className="mt-auto">
                     <Stars />
                   </div>

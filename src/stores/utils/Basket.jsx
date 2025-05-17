@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import UseBasket from './UseBasket';
 import Counter from '../../store/Counter';
+import ExpandableText from './ExpandableText';
 
 const  Basket  =({ product})=>  {
   
@@ -46,11 +47,11 @@ const  Basket  =({ product})=>  {
           <div className="flex justify-between gap-x-2">
               <div>
                   <h3 className="clamp-text w-[70%] text-lg">{title}</h3>
-                  <p className="clamp-text text-sm text-gray-500">{description}</p>
+                  <ExpandableText  text={description} maxChars={100} />
                   
               </div>
               <div>
-                  <p className="text-2xl font-bold">{price}$</p>
+                  <p className=" font-bold">{price}$</p>
               </div>
           </div>
       </div>
