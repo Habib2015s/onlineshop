@@ -62,7 +62,7 @@ const ProductDetails = ({ productId ,onclose}) => {
                     <p>{product.title}</p>
                 </div>
                 <div>
-                    <p className="text-cyan-800 text-xl">{product.price}</p>
+                    <p className="text-cyan-800 text-xl">{product.price}$</p>
                 </div>
                 </div>
                 <div className="text-sm text-gray-500 mb-3">
@@ -113,7 +113,7 @@ const ProductDetails = ({ productId ,onclose}) => {
                 </div>
                 <div>
                 <FontAwesomeIcon icon={faCartShopping} size="xl" />
-                <span>{totalPrice}</span>
+                <span>{totalPrice}$</span>
                 </div>
                       </div>
                
