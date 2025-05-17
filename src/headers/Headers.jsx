@@ -1,6 +1,8 @@
 import Minimal from "../icons/Minimal";
 import AccountIcon from "../icons/AccountIcon";
 import UseBasket from "../stores/utils/UseBasket";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const Headers=({handleCartClick})=>{  
     
@@ -29,7 +31,9 @@ return(
         <p>accounts</p>
         <div className="flex items-center gap-x-2 border-2 border-transparent 
         px-3 py-1 rounded-md cursor-pointer" onClick={handleCartClick}>
-         {sumOfBasket()}<p>cart</p>
+         <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+         <p>cart</p>
+         {sumOfBasket()}
         </div>
         </div>
            

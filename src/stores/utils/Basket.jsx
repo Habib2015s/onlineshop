@@ -40,7 +40,7 @@ const  Basket  =({ product})=>  {
   return (
     <div className="grid grid-rows-[2fr_1fr] gap-x-5 gap-y-5 sm:grid-rows-none sm:grid-cols-[150px_1fr] items-center mb-2 bg-gray-100 p-2">
           <div className="flex flex-col items-center">
-              <img src={image} alt="image" />
+              <img src={image} alt="image" className='w-28' />
               <br/>
               <Counter quantity={quantity} handleChange={handleChange} handleClick={handleClick} />
           </div>

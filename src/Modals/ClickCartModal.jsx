@@ -61,7 +61,7 @@ const ClickCardModal=()=>{
 
                     </address>
                     </div>
-                <div className="border border-gray-500 lg:col-span-2 lg:row-span-5 rounded-lg flex flex-col"><h2 className="text-xl mb-5 m-4">
+                <div className="border border-gray-500  lg:col-span-2 lg:row-span-5 rounded-lg flex flex-col"><h2 className="text-xl mb-5 m-4">
 
                     order summary
                 </h2>
