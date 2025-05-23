@@ -7,6 +7,7 @@ import {  QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Header from "./headers/Header";
 import ProductDetails from "./stores/components/ProductDetails";
+import Login from "./stores/components/Login";
 
 const App=()=> {
   const queryclient= new QueryClient()
@@ -16,7 +17,7 @@ const App=()=> {
 <ReactQueryDevtools/>
       <BrowserRouter>
       <Routes>
-
+        <Route path="/Login" element={<Login/>}/>
         <Route path="/" element={<HomePage/>}>
         <Route path="/header" element={<Header/>}/>
         </Route>

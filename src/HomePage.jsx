@@ -7,7 +7,7 @@ const HomePage=()=>{
     
     
     return(
-        <div className="bg-slate-200">
+        <div className="bg-slate-200 w-screen">
             <Header/>
            
             <TitleLogo/>
