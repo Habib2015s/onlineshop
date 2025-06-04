@@ -12,7 +12,7 @@ const Headers=({handleCartClick})=>{
         return sumqtn
     }
 return(
-    <div className=" px-[10px] md:px-[67px] bg-gray-100 flex justify-between items-center w-screen mx-auto py-3 ">
+    <div className=" px-[10px] md:px-[67px] bg-gray-100 flex justify-between items-center w-full mx-auto py-3 ">
     <div className="flex items-center gap-x-3">
     <div className="flex items-center">
 

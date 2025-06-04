@@ -20,7 +20,7 @@ const Header=()=>{
 
     return(<div >
 
-        <div className="w-screen justify-between p-3 h-14 flex bg-amber-600">
+        <div className="w-full justify-between p-3 h-14 flex bg-amber-600">
              
 <div className="flex">
              <Call />
