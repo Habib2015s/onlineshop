@@ -1,102 +1,59 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import UseBasket from "../utils/UseBasket";
-import {useWishlist} from "../utils/useWishlist";
-import { getProducts } from "../../service/getProducts";
-
 import SideBarModal from "../../Modals/SideBarModal";
+import { getProducts } from "../../service/getProducts";
 import Stars from "../../icons/Stars";
-import {Favorite} from "../../icons/Favorite";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faTrash } from "@fortawesome/free-solid-svg-icons";
-import ExpandableText from "../utils/ExpandableText";
+import ExpandableText from "../utils/ExpandableText"; // فرض کردم داری این کامپوننت رو
 
 const Products = () => {
-    
   const [isOpen, setIsOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState(null);
-  const [hoveredId, setHoveredId] = useState(null);
+  const [activeProductId, setActiveProductId] = useState(null);
 
-  
-  const wishlist = useWishlist((state) => state.itemIds);
-  const cartItems = UseBasket((state) => state.items);
-
-  const { isPending, data } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ["/products"],
-    queryFn: () => getProducts(),
+    queryFn: getProducts,
   });
-
-  const handleCloseModal = () => {
-    setIsOpen(false);
-  };
 
   const handleProductClick = (productId) => {
     setSelectedProductId(productId);
+    setActiveProductId(productId);
     setIsOpen(true);
   };
 
+  const handleCloseModal = () => {
+    setIsOpen(false);
+    setActiveProductId(null);
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
   return (
-    <div className="m-auto w-3/4">
-      {isPending ? (
-        "loading..."
-      ) : (
-        <div className=" grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mb-10 items-stretch">
-          {data.data.map((item) => {
-            const isFavorite = wishlist.includes(item.id);
-            const isInCart = cartItems.some((cartItem) => cartItem.id === item.id);
-
-            return (
-              <div
-                key={item.id}
-                onClick={() => handleProductClick(item.id)}
-                onMouseEnter={() => setHoveredId(item.id)}
-                onMouseLeave={() => setHoveredId(null)}
-                      className="relative w-[100%] h-[100%]  flex flex-col gap-y-3
-                       bg-white p-2 shadow z-0 rounded-md hover:scale-101 cursor-pointer transition-transform "
-
-              >
-                <div className="w-full relative">
-                  <img className="w-full p-14 aspect-square" src={item.image} alt="image" />
-                
-                    <Favorite  itemId={item.id}  isFavorite={isFavorite} />
-                
-                </div>
-
-                <div className="flex flex-col h-full items-start gap-y-3">
-                  <div className="flex justify-between w-full">
-                    <h2 className="clamp-text w-3/5 text-lg">{item.title}</h2>
-                    <h3 className="text-cyan-800 text-xl">{item.price}$</h3>
-                  </div>
-                  <ExpandableText  text={item.description} maxChars={100} />
-                  <div className="mt-auto">
-                    <Stars />
-                  </div>
-                </div>
-
-                {hoveredId === item.id && (
-                  <span
-                    className={`absolute inset-0 z-0 ${
-                      isInCart ? "bg-red-700/15" : "bg-green-700/15"
-                    } rounded-md flex justify-center items-center transition-colors`}
-                  >
-                    <span
-                      className={`w-20 h-20 bg-gray-100 flex  items-center justify-center rounded-full ${
-                        isInCart ? "text-red-600" : "text-green-600"
-                      } hover:scale-101 `}
-                    >
-                      {isInCart ? (
-                        <FontAwesomeIcon icon={faTrash} size="xl" />
-                      ) : (
-                        <FontAwesomeIcon icon={faCartShopping} size="xl" />
-                      )}
-                    </span>
-                  </span>
-                )}
-              </div>
-            );
-          })}
+    <div className="m-auto w-3/4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+      {data.data.map((product) => (
+        <div
+          key={product.id}
+          onClick={() => handleProductClick(product.id)}
+          className={`cursor-pointer p-4 border rounded-md shadow-md hover:shadow-xl transition duration-300 flex flex-col`}
+          style={{
+            backgroundColor: activeProductId === product.id ? "#e0f7fa" : "white",
+            borderColor: activeProductId === product.id ? "#00acc1" : "#ddd",
+          }}
+        >
+          <img
+            src={product.image}
+            alt={product.title}
+            className="w-full h-48 object-contain mb-3"
+          />
+          <h2 className="text-lg font-semibold mb-1">{product.title}</h2>
+          <p className="text-cyan-700 font-bold text-xl mb-2">{product.price}$</p>
+          <ExpandableText text={product.description} maxChars={100} />
+          <div className="mt-auto">
+            <Stars />
+          </div>
         </div>
-      )}
+      ))}
 
       <SideBarModal
         visible={isOpen}
