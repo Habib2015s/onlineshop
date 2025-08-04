@@ -5,7 +5,8 @@ import useLikeCounter from "../stores/useLikeCounter";
 import NoneLike from "../icons/NoneLike";
 
 const Footer=()=>{
-    const count = useLikeCounter((state) => state.count);
+      const likedItems = useLikeCounter((state) => state.likedItems);
+
     const {items}=UseBasket()
     const sumOfBasket=()=>{
         const sumqtn =items.reduce((acc,curr)=>acc+curr.quantity,0)
@@ -21,7 +22,7 @@ const Footer=()=>{
                  <div className="flex gap-x-3">
                  
                     <NoneLike/>
-                 <p>{count} WishList</p>
+                 <p>{likedItems.length} WishList Items</p>
                  </div>
         </div>
     )

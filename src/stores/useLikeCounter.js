@@ -1,11 +1,16 @@
-
-
 import { create } from "zustand";
 
 const useLikeCounter = create((set) => ({
-  count: 0,
-  increment: () => set((state) => ({ count: state.count + 1 })),
-  decrement: () => set((state) => ({ count: Math.max(0, state.count - 1) })),
+  likedItems: [],
+  toggleLike: (productId) =>
+    set((state) => {
+      const isLiked = state.likedItems.includes(productId);
+      return {
+        likedItems: isLiked
+          ? state.likedItems.filter((id) => id !== productId)
+          : [...state.likedItems, productId],
+      };
+    }),
 }));
 
 export default useLikeCounter;
